@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MSMS.Repositary
 {
-    interface IReposit
+    interface Reposit
     {
     }
 }
