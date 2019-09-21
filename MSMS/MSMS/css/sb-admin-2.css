@@ -12058,3 +12058,23 @@ footer.sticky-footer .copyright {
 body.sidebar-toggled footer.sticky-footer {
   width: 100%;
 }
+@media (min-width: 768px) {
+    .d-md-inline {
+        display: inline !important;
+    }
+}
+.sidebar #sidebarToggle {
+    width: 2.5rem;
+    height: 2.5rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    cursor: pointer;
+}
+
+.rounded-circle {
+    border-radius: 50% !important;
+}
+
+.sidebar-dark #sidebarToggle {
+    background-color: rgba(255,255,255,.2);
+}

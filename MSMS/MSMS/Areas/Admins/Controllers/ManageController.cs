@@ -53,7 +53,13 @@ namespace MSMS.Areas.Admins.Controllers
         {
             return View(ObjBal.OwnerList());
         }
-
+        public ActionResult Logout()
+        {
+            Session.Clear();
+            Session.Abandon();
+            // Redirecting to Login page after deleting Session
+            return RedirectToAction("Login");
+        }
 
 
 

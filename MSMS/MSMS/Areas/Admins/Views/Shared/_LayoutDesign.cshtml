@@ -2,8 +2,6 @@
 @{
     ViewBag.Title = "_LayoutDesign";
 }
-
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -18,7 +16,7 @@
 
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <!-- Custom styles for this template-->
-
+    <link href="~/css/sb-admin-2.css" rel="stylesheet" />
     <link href="~/css/sb-admin-2.min.css" rel="stylesheet" />
     <style>
         body {
@@ -39,9 +37,9 @@
         }
 
             .notification:hover {
-                background:#4800ff;
-                color:#fff;
-                text-decoration:none;
+                background: #4800ff;
+                color: #fff;
+                text-decoration: none;
             }
 
             .notification .EmpCount1 {
@@ -51,7 +49,6 @@
                 color: #fff;
                 margin-left: 8px;
                 font-weight: 900;
-                
             }
 
             .notification .Active1 {
@@ -84,7 +81,7 @@
                 url: "http://localhost:50003/Api/WebApI/EmpCount",
                 dataType: "Json",
                 success: function (data) {
-                    
+
                     document.getElementById("EmpCount").innerHTML = data;
                     document.getElementById("EmpCount1").innerHTML = data;
                 },
@@ -107,12 +104,12 @@
                     else {
                         $("#Active1").css("background-color", "Red");
                     }
-                    
+
                     document.getElementById("Active").innerHTML = data;
                     document.getElementById("Active1").innerHTML = data;
                 },
                 error: function (XHR) {
-                   
+
                     var ResponseText = JSON.parse(XHR.responseText);
                     alert(XHR.status + " : " + ResponseText.Message);
                 }
@@ -146,25 +143,27 @@
             OwnerPending();
         }, 5000);
     </script>
-
 </head>
-<body id="page-top">
+<body id="page-top" style="background-color:darkcyan">
     <!-- Page Wrapper -->
     <div id="wrapper">
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color:#000;background-image: linear-gradient(180deg,#4800ff 10%,#4800ff 100%);">
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color:#1cd846">
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html" style="background-color:darkcyan">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">{emp.Name} <sup>2</sup></div>
+                <div class="sidebar-brand-text mx-3">
+                    WELCOME
+                    @Html.Encode(User.Identity.Name)
+                </div>
             </a>
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link" href="Dashboard">
+            <li class="nav-item active" style="background-color:darkcyan">
+                <a class="nav-link" href="index.html">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span>
                 </a>
@@ -172,41 +171,78 @@
             <!-- Divider -->
             <hr class="sidebar-divider">
             <!-- Heading -->
-            <div class="sidebar-heading">
-                Admin
-            </div>
+            @*<div class="sidebar-heading">
+                    Interface
+                </div>*@
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                @Html.ActionLink("AdminAdd", "OwnerRegistrationAdd", "Manage", new { area = "Admins" }, new { @class = "navbar-brand dashboard-text" })
+            <li class="nav-item" style="background-color:darkcyan">
+                <i class="fas fa-fw fa-cog" style="color: #fff;padding-left: 22px;"></i> @Html.ActionLink("AdminAdd", "OwnerRegistrationAdd", "Manage", new { area = "Admins" }, new { @class = "navbar-brand dashboard-text" })
 
 
             </li>
             <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
-                @Html.ActionLink("ManageAdd", "ManageOwnerRegAdd", "Manage", new { area = "Admins" }, new { @class = "navbar-brand dashboard-text" })
+            <li class="nav-item" style="background-color:darkcyan">
+                <i class="fas fa-fw fa-wrench" style="color: #fff;padding-left: 22px;"></i>@Html.ActionLink("ManageAdd", "ManageOwnerRegAdd", "Manage", new { area = "Admins" }, new { @class = "navbar-brand dashboard-text" })
+
+               
 
 
             </li>
             <!-- Divider -->
             <hr class="sidebar-divider">
             <!-- Heading -->
-            <div class="sidebar-heading">
-                Store
-            </div>
+            @*<div class="sidebar-heading">
+                    Addons
+                </div>*@
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                @Html.ActionLink("StoreAdd", "StoreAdd", "Manage", new { area = "Admins" }, new { @class = "navbar-brand dashboard-text" })
-
-
+            <li class="nav-item" style="background-color:darkcyan">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Pages</span>
+                </a>
+                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Login Screens:</h6>
+                        @* <a class="collapse-item" href="login.chtml">Login</a>
+                            <a class="collapse-item" href="register.chtml">Register</a>
+                            <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
+                            <div class="collapse-divider"></div>
+                            <h6 class="collapse-header">Other Pages:</h6>
+                            <a class="collapse-item" href="404.html">404 Page</a>*@
+                        <a class="collapse-item" @Html.ActionLink("AllData", "Show")
+                           </a>
+                        <a class="collapse-item" @Html.ActionLink("Edit", "Edit")
+                           </a>
+                        <a class="collapse-item" @Html.ActionLink("Details", "Details")
+                           </a>
+                        <a class="collapse-item" @Html.ActionLink("Delete", "Delete")
+                           </a>
+                        @*<a class="collapse-item" href="blank.html">Blank Page</a>*@
+                    </div>
+                </div>
             </li>
             <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                @Html.ActionLink("ManageAdd", "StoreManageAdd", "Manage", new { area = "Admins" }, new { @class = "navbar-brand dashboard-text" })
+            <li class="nav-item" style="background-color:darkcyan">
+                <i class="fas fa-fw fa-chart-area" style="color: #fff;padding-left: 22px;"></i> @Html.ActionLink("StoreAdd", "StoreAdd", "Manage", new { area = "Admins" }, new { @class = "navbar-brand dashboard-text" })
 
+                
+             
+                
             </li>
             <!-- Nav Item - Tables -->
+            <li class="nav-item" style="background-color:darkcyan">
+                
+                    <i class="fas fa-fw fa-chart-area" style="color: #fff;padding-left: 22px;"></i>
+                    @Html.ActionLink("ManageAdd", "StoreManageAdd", "Manage", new { area = "Admins" }, new { @class = "navbar-brand dashboard-text" })
 
-
+               
+            </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
         </ul>
         <!-- End of Sidebar -->
         <!-- Content Wrapper -->
@@ -224,71 +260,50 @@
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-                        <li class="nav-item dropdown no-arrow d-sm-none">
-                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-search fa-fw"></i>
-                            </a>
-                            <!-- Dropdown - Messages -->
-                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
-                                <form class="form-inline mr-auto w-100 navbar-search">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary" type="button">
-                                                <i class="fas fa-search fa-sm"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </li>
                         <!-- Nav Item - Alerts -->
-                        
-                        <!-- Nav Item - Messages -->
-                        
-                        
+
                         <div class="row">
-            <div class="navbar navbar-inverse" role="banner">
-                <nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
-                    <ul class="nav navbar-nav">
-                        <li>
-                            <a href="#" class="notification flash">
-                                <span>Owners Count</span>
-                                <span class="EmpCount1 bounceInDown" id="EmpCount1"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="notification flash">
-                                <span>Active</span>
-                                <span class="Active1 bounceInDown" id="Active1"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="notification flash">
-                                <span>Pending</span>
-                                <span class="Pending1 bounceInDown" id="Pending1"></span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-        <div class="topbar-divider d-none d-sm-block"></div>
-            <li class="nav-item dropdown no-arrow">
+                            <div class="navbar navbar-inverse" role="banner">
+                                <nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
+                                    <ul class="nav navbar-nav">
+                                        <li>
+                                            <a href="#" class="notification flash">
+                                                <span>Owners Count</span>
+                                                <span class="EmpCount1 bounceInDown" id="EmpCount1"></span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="notification flash">
+                                                <span>Active</span>
+                                                <span class="Active1 bounceInDown" id="Active1"></span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="notification flash">
+                                                <span>Pending</span>
+                                                <span class="Pending1 bounceInDown" id="Pending1"></span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="topbar-divider d-none d-sm-block"></div>
+                        <!-- Nav Item - User Information -->
+                        <div style="display: none;">
+                            <b>Employee Count : </b><span id="EmpCount"></span>
+                        </div>
+                        <div style="display: none;">
+                            <b>Employee Count : </b><span id="Active"></span>
+                        </div>
+                        <div style="display: none;">
+                            <b>Employee Count : </b><span id="Pending"></span>
+                        </div>
+                        <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">you</span>
                                 <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
                             </a>
-
-                            <div style="display: none;">
-                                <b>Employee Count : </b><span id="EmpCount"></span>
-                            </div>
-                            <div style="display: none;">
-                                <b>Employee Count : </b><span id="Active"></span>
-                            </div>
-                            <div style="display: none;">
-                                <b>Employee Count : </b><span id="Pending"></span>
-                            </div>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="#">
@@ -304,7 +319,7 @@
                                     Activity Log
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="http://localhost:50003/Admin/Home/Login" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
@@ -312,22 +327,10 @@
                         </li>
                     </ul>
                 </nav>
-                <div id="page-wrapper">
-                    <div class="container-fluid body-content">
-                        <div> @RenderBody()</div>
-                        <!-- Page Heading -->
-                        <div class="row" id="main">
-                            @*<div class="col-sm-12 col-md-12 well" id="content">
-                                    <h1>Welcome Admin!</h1>
-                                </div>*@
-
-                        </div>
-                        <!-- /.row -->
-                    </div>
-                    <!-- /.container-fluid -->
-                </div>
-
+                <!-- End of Topbar -->
             </div>
+
+            <div> @RenderBody()</div>
             <!-- End of Main Content -->
             <!-- Footer -->
             <footer class="sticky-footer bg-white">
@@ -359,7 +362,9 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                   
+                    @Html.ActionLink("Logout", "Login", "Home", new { area = "Admins" }, new { @class = "navbar-brand dashboard-text" })
+
                 </div>
             </div>
         </div>
@@ -376,5 +381,6 @@
     <!-- Page level custom scripts -->
     <script src="~/js/demo/chart-area-demo.js"></script>
     <script src="~/js/demo/chart-pie-demo.js"></script>
+    <script src="~/Scripts/MyScript.js"></script>
 </body>
 </html>
