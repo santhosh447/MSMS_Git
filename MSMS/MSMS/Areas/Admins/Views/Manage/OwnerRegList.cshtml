@@ -1,0 +1,109 @@
+﻿@model IEnumerable<MSMS.Areas.Admins.Models.Owner_Registration>
+
+@{
+    ViewBag.Title = "OwnerRegList";
+    Layout = "~/Areas/Admins/Views/Shared/_LayoutDesign.cshtml";
+}
+
+<h2>OwnerRegList</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Age)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pan_Number)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Aadhar_Number)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Permanent_Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Current_Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Owner_Image)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Age)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gender)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone)
+        </td>
+        <td>
+            @*@Html.DisplayFor(modelItem => item.Pan_Number)*@
+            @{
+                var base65 = Convert.ToBase64String(item.Pan_Number);
+                string imgsrc = string.Format("data:Image/gif;base64,{0}", base65);
+            }
+            <img src="@imgsrc" style="width:100px;height:100px" />
+        </td>
+        <td>
+            @*@Html.DisplayFor(modelItem => item.Aadhar_Number)*@
+            @{
+                var base66 = Convert.ToBase64String(item.Aadhar_Number);
+                string imgsrc2 = string.Format("data:Image/gif;base64,{0}", base66);
+            }
+            <img src="@imgsrc2" style="width:100px;height:100px" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Permanent_Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Current_Address)
+        </td>
+        <td>
+            @*@Html.DisplayFor(modelItem => item.Owner_Image)*@
+            @{
+                var base64 = Convert.ToBase64String(item.Owner_Image);
+                string imgsrc1 = string.Format("data:Image/gif;base64,{0}", base64);
+            }
+            <img src="@imgsrc1" style="width:100px;height:100px" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Password)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Owner_Email }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Owner_Email }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Owner_Email })
+        </td>
+    </tr>
+}
+
+</table>

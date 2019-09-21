@@ -1,12 +1,11 @@
-﻿@model MSMS.Models.LoginModel
+﻿@model MSMS.Areas.Admins.Models.LoginModel
 
 @{
     ViewBag.Title = "Login";
 }
 <link href="~/css/login.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
-
-
+@using (Html.BeginForm()) { 
 <div class="container h-100">
     <div class="d-flex justify-content-center h-100">
         <div class="user_card">
@@ -32,10 +31,10 @@
 
                     <br>
                     <div class="form-group mb-1">
-                        <input type="submit" id="btnLogin" name="btnlogin" value="login" class="btn btn-primary" />
-                        <input type="submit" id="btnLogin" name="btnlogin" value="Cancel" class="btn btn-danger" />
+                        <input type="submit" id="login" name="login" value="login" class="btn btn-primary" />
+                        <input type="submit" id="Cancel" name="login" value="Cancel" class="btn btn-danger" />
                     </div>
-                    @Html.ActionLink("Login", "DashBoard")
+                    @Html.ActionLink("Login", "Dashboard")
                 </form>
             </div>
 
@@ -45,5 +44,6 @@
 
     </div>
 </div>
-</div>
 
+
+}

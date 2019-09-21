@@ -1,16 +1,10 @@
-﻿
+﻿@model  MSMS.Areas.Admins.Models.Owner_Registration
 @{
     ViewBag.Title = "OwnerRegistrationAdd";
-    Layout = "~/Areas/Admin/Views/Shared/_LayoutDesign.cshtml";
+    Layout = "~/Areas/Admins/Views/Shared/_LayoutDesign.cshtml";
 }
 
-<h2></h2>
 
-
-@{
-    ViewBag.Title = "OwnerRegistrationAdd";
-    Layout = "~/Areas/Admin/Views/Shared/_LayoutDesign.cshtml";
-}
 <style>
     .box.box-danger {
         border-top-color: #dd4b39;
@@ -45,113 +39,180 @@
 <link href="~/css/login.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
 
-<div class="row">
-    <div class="col-sm-12">
+@using (Html.BeginForm("OwnerRegistrationAdd", "Manage", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="col-md-8">
+        <div class="box box-danger">
+            <div class="box-header" style="margin-top:10px;margin-bottom:10px;">
+                <h3 class="box-title">OwnerRegistrationAdd</h3>
+            </div>
+            <div class="box-body">
+                <div class="row" style="margin-top:10px;">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-5" style="font-weight:bold;">Owner_Email</div>
+                    <div class="col-sm-5">
+                        @*<input type="email" id="txtOwnerEmail" name="txtOwnerEmail" class="form-control" placeholder="Enter Employee Name" />*@
+                        @Html.TextBoxFor(m => m.Owner_Email, null, new { @class = "form-control", @placeholder = "Enter Owner Name" })
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="row" style="margin-top:10px;">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-5" style="font-weight:bold;">Name</div>
+                    <div class="col-sm-5">
+                        @*<input type="text" id="txtName" name="txtName" class="form-control" placeholder="Enter Name" />*@
+                        @Html.TextBoxFor(m => m.Name, null, new { @class = "form-control", @placeholder = "Enter Owner Name" })
 
-    </div>
-</div>
-<div class="col-md-8">
-    <div class="box box-danger">
-        <div class="box-header">
-            <h3 class="box-title">OwnerRegistrationAdd</h3>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="row" style="margin-top:10px;">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-5" style="font-weight:bold;">Age</div>
+                    <div class="col-sm-5">
+                        @*<input type="text" id="txtAge" name="txtAge" class="form-control" placeholder="Enter Age" />*@
+                        @Html.TextBoxFor(m => m.Age, null, new { @class = "form-control", @placeholder = "Enter Age" })
+
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="row" style="margin-top:10px;">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-5" style="font-weight:bold;">Gender</div>
+                    <div class="col-sm-5">
+                        @*<input type="radio" id="rbtnMale" name="Gender" class="form" value="Male" /> Male
+                <input type="radio" id="rbtnFemale" name="Gender" class="form" value="Female" /> Female*@
+                        @Html.RadioButtonFor(m => m.Gender, "male", new { @class = "form", @id = "rdbtnMale" })male
+
+                        @Html.RadioButtonFor(m => m.Gender, "female", new { @class = "form", @id = "rdbtnFemale" })female
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="row" style="margin-top:10px;">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-5" style="font-weight:bold;">Phone</div>
+                    <div class="col-sm-5">
+                        @*<input type="tel" id="txtPhone" name="txtPhone" class="form-control" placeholder="Enter Phone" />*@
+                        @Html.TextBoxFor(m => m.Phone, null, new { @class = "form-control", @placeholder = "Enter Phone" })
+
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-5 form-group">
+                        <label>Pan Image</label>
+                    </div>
+                    <div class="col-sm-5 form-group">
+                        <div class="fileinput fileinput-new" data-provides="fileinput">
+                            <div class="fileinput-new img-thumbnail" style="width: 200px; height: 150px;">
+                                <img data-src="holder.js/100%x100%" alt="...">
+                            </div>
+                            <div class="fileinput-preview fileinput-exists img-thumbnail" style="max-width: 200px; max-height: 150px;"></div>
+
+                            <div>
+                                <span class="btn btn-outline-secondary btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span><input type="file" name="Image" id="Image"></span>
+                                <a href="#" class="btn btn-outline-secondary fileinput-exists" data-dismiss="fileinput" stye="margin-top:10px;">Remove</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-1"></div>
+               `</div>
+                <div class="row">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-5 form-group">
+                        <label>Aadhar Image</label>
+                    </div>
+                    <div class="col-sm-5 form-group">
+                        <div class="fileinput fileinput-new" data-provides="fileinput">
+                            <div class="fileinput-new img-thumbnail" style="width: 200px; height: 150px;">
+                                <img data-src="holder.js/100%x100%" alt="...">
+                            </div>
+                             <div class="fileinput-preview fileinput-exists img-thumbnail" style="max-width: 200px; max-height: 150px;"></div>
+                            <div>
+                                 <span class="btn btn-outline-secondary btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span><input type="file" name="Image1" id="Image1"></span>
+                                 <a href="#" class="btn btn-outline-secondary fileinput-exists" data-dismiss="fileinput">Remove</a>
+                             </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="row" style="margin-top:10px;">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-5" style="font-weight:bold;">Permanent_Address</div>
+                    <div class="col-sm-5">
+                        @*<textarea rows="4" cols="50" id="currentaddress"></textarea>*@
+                        @Html.TextAreaFor(m => m.Permanent_Address, new { @class = "form-control", @placeholder = "Enter Current Address" })
+
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="row" style="margin-top:10px;">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-5" style="font-weight:bold;">Current_Address</div>
+                    <div class="col-sm-5">
+                        @*<textarea rows="4" cols="50" id="currentaddress"></textarea>*@
+                        @Html.TextAreaFor(m => m.Current_Address, new { @class = "form-control", @placeholder = "Enter Current Address" })
+
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-5 form-group">
+                        <label>Owner Image</label>
+                    </div>
+                    <div class="col-sm-5 form-group">
+                        <div class="fileinput fileinput-new" data-provides="fileinput">
+                            <div class="fileinput-new img-thumbnail" style="width: 200px; height: 150px;">
+                                <img data-src="holder.js/100%x100%" alt="...">
+                            </div>
+                            <div class="fileinput-preview fileinput-exists img-thumbnail" style="max-width: 200px; max-height: 150px;"></div>
+
+                            <div>
+                                <span class="btn btn-outline-secondary btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span><input type="file" name="Image2" id="Image2"></span>
+                                <a href="#" class="btn btn-outline-secondary fileinput-exists" data-dismiss="fileinput">Remove</a>
+                            </div>
+                        </div>
+                    
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="row" style="margin-top:10px;">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-5" style="font-weight:bold;">Password</div>
+                    <div class="col-sm-5">
+                        @*<input type="file" class="uploadFile img" value="Upload Photo" id="Owner_Image" style="width: 0px;height: 0px;overflow: hidden;">*@
+                        @Html.PasswordFor(m => m.Password, new { @type = "password", @class = "form-control", @placeholder = "Enter Password", @id = "txtPwd" })
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="row" style="margin-top:10px;">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-5" style="font-weight:bold;">Status</div>
+                    <div class="col-sm-5">
+                        @*<input type="file" class="uploadFile img" value="Upload Photo" id="Owner_Image" style="width: 0px;height: 0px;overflow: hidden;">*@
+                        @Html.TextBoxFor(m => m.Status, new { @class = "form-control", @placeholder = "Enter Status" })
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="row" style="text-align:center;margin-top:10px;">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-5">
+                        @*<a type="s" id="Register" name="Register" value="Register" class="btn btn-primary" href="StoreAdd">Register</a>*@
+                        <input type="submit" name="Register" value="Register" id="Register" class="btn btn-primary" />
+                    </div>
+                    <div class="col-sm-5">
+                        <a type="button" id="btnOwnerCancel" name="btnOwnerReg" value="btnCancel" class="btn btn-danger" href="StoreAdd">Cancel</a>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <br>
+
+            </div>
         </div>
-        <div class="box-body">
-            <!-- Date dd/mm/yyyy -->
-            <div class="row" style="margin-top:10px;">
-                <div class="col-sm-1"></div>
-                <div class="col-sm-5" style="font-weight:bold;">Employee Name</div>
-                <div class="col-sm-5">
-                    <input type="text" id="txtUserID" name="txtUserID" class="form-control" placeholder="Enter Employee Name" />
-                </div>
-                <div class="col-sm-1"></div>
-            </div>
-            <div class="row" style="margin-top:10px;">
-                <div class="col-sm-1"></div>
-                <div class="col-sm-5" style="font-weight:bold;">Password</div>
-                <div class="col-sm-5">
-                    <input type="password" id="txtPwd" name="txtPwd" class="form-control" placeholder="Enter Password" />
-                </div>
-                <div class="col-sm-1"></div>
-            </div>
-            <div class="row" style="margin-top:10px;">
-                <div class="col-sm-1"></div>
-                <div class="col-sm-5" style="font-weight:bold;">Gender</div>
-                <div class="col-sm-5">
-                    <input type="radio" id="rbtnMale" name="Gender" class="form" value="Male" /> Male
-                    <input type="radio" id="rbtnFemale" name="Gender" class="form" value="Female" /> Female
-                </div>
-                <div class="col-sm-1"></div>
-            </div>
-            <div class="row" style="margin-top:10px;">
-                <div class="col-sm-1"></div>
-                <div class="col-sm-5" style="font-weight:bold;">Employee Name</div>
-                <div class="col-sm-5">
-                    <input type="text" id="txtUserID" name="txtUserID" class="form-control" placeholder="Enter Employee Name" />
-                </div>
-                <div class="col-sm-1"></div>
-            </div>
-            <div class="row" style="margin-top:10px;">
-                <div class="col-sm-1"></div>
-                <div class="col-sm-5" style="font-weight:bold;">Employee Name</div>
-                <div class="col-sm-5">
-                    <input type="text" id="txtUserID" name="txtUserID" class="form-control" placeholder="Enter Employee Name" />
-                </div>
-                <div class="col-sm-1"></div>
-            </div>
-            <div class="row" style="margin-top:10px;">
-                <div class="col-sm-1"></div>
-                <div class="col-sm-5" style="font-weight:bold;">Employee Name</div>
-                <div class="col-sm-5">
-                    <input type="text" id="txtUserID" name="txtUserID" class="form-control" placeholder="Enter Employee Name" />
-                </div>
-                <div class="col-sm-1"></div>
-            </div>
-            <div class="row" style="margin-top:10px;">
-                <div class="col-sm-1"></div>
-                <div class="col-sm-5" style="font-weight:bold;">Employee Name</div>
-                <div class="col-sm-5">
-                    <input type="text" id="txtUserID" name="txtUserID" class="form-control" placeholder="Enter Employee Name" />
-                </div>
-                <div class="col-sm-1"></div>
-            </div>
-            <div class="row" style="margin-top:10px;">
-                <div class="col-sm-1"></div>
-                <div class="col-sm-5" style="font-weight:bold;">Employee Name</div>
-                <div class="col-sm-5">
-                    <input type="text" id="txtUserID" name="txtUserID" class="form-control" placeholder="Enter Employee Name" />
-                </div>
-                <div class="col-sm-1"></div>
-            </div>
-            <div class="row" style="margin-top:10px;">
-                <div class="col-sm-1"></div>
-                <div class="col-sm-5" style="font-weight:bold;">Department</div>
-                <div class="col-sm-5">
-                    <select id="ddlDeptNo" name="ddlDeptNo" class="form-control">
-                        <option value="0">--Select Department--</option>
-                        <option value="10">Manager</option>
-                        <option value="20">Hr</option>
-                        <option value="30">Sales</option>
-                        <option value="40">Finance</option>
-                    </select>
-                </div>
-                <div class="col-sm-1"></div>
-            </div>
-            <div class="row" style="text-align:center;margin-top:10px;">
-                <div class="col-sm-4"></div>
-                <div class="col-sm-2">
-                    <a type="button" id="btnRegister" name="btnRegister" class="btn btn-primary" href="StoreAdd" />Register</a>
-                </div>
-                <div class="col-sm-2">
-                    <a type="button" id="btnRegister" name="btnCancel" class="btn btn-danger" href="StoreAdd" />Cancel</a>
-                </div>
-                <div class="col-sm-4"></div>
-            </div>
-            <br />
-            <!-- /.form group -->
-
-        </div>
-        <!-- /.box-body -->
     </div>
 
-</div>
+}
+
 

@@ -1,70 +1,144 @@
-﻿
+﻿@model MSMS.Areas.Admins.Models.Owner_Store_List
 @{
     ViewBag.Title = "Dashboard";
-    Layout = "~/Areas/Admin/Views/Shared/_LayoutDesign.cshtml";
+    Layout = "~/Areas/Admins/Views/Shared/_LayoutDesign.cshtml";
 }
 
 <h2>Owner Details</h2>
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>Handle</td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>Handle</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td>Larry the Bird</td>
-            <td>twitter</td>
-            <td>Handle</td>
-        </tr>
-    </tbody>
-</table>
-<h2>Store Details</h2>
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>Handle</td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>Handle</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td>Larry the Bird</td>
-            <td>twitter</td>
-            <td>Handle</td>
-        </tr>
-    </tbody>
-</table>
+<div class="table-responsive">
+    <table class="table table-bordered col-sm-12">
+        <thead>
+            <tr>
+                <th>Owner_Email</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Phone</th>
+                <th>Pan_Number</th>
+                <th>Aadhar_Number</th>
+                <th>Permanent_Address</th>
+                <th>Current_Address</th>
+                <th>Owner_Image</th>
+                <th>Password</th>
+                <th>Status</th>
 
+
+
+                @foreach (var item in Model.owner_list)
+                {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Owner_Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Age)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Gender)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Phone)
+                    </td>
+                    <td>
+                        @*@Html.DisplayFor(modelItem => item.Pan_Number)*@
+                        @{
+                            var base65 = Convert.ToBase64String(item.Pan_Number);
+                            string imgsrc = string.Format("data:Image/gif;base64,{0}", base65);
+                        }
+                        <img src="@imgsrc" style="width:100px;height:100px" />
+                    </td>
+                    <td>
+                        @*@Html.DisplayFor(modelItem => item.Aadhar_Number)*@
+                        @{
+                            var base66 = Convert.ToBase64String(item.Aadhar_Number);
+                            string imgsrc2 = string.Format("data:Image/gif;base64,{0}", base66);
+                        }
+                        <img src="@imgsrc2" style="width:100px;height:100px" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Permanent_Address)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Current_Address)
+                    </td>
+                    <td>
+                        @*@Html.DisplayFor(modelItem => item.Owner_Image)*@
+                        @{
+                            var base64 = Convert.ToBase64String(item.Owner_Image);
+                            string imgsrc1 = string.Format("data:Image/gif;base64,{0}", base64);
+                        }
+                        <img src="@imgsrc1" style="width:100px;height:100px" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Password)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </td>
+
+                </tr>
+            }
+        </table>
+        <h2>Store Details</h2>
+        <table class="table table-bordered">
+
+
+            <tr>
+                <th>Owner_Email</th>
+                <th>StoreEmail</th>
+                <th>StoreName</th>
+                <th>Phone</th>
+                <th>License_Number</th>
+                <th>License_Image_Copy</th>
+                <th>Address</th>
+                <th>Tin_Number</th>
+                <th>Percentage</th>
+                <th>Status</th>
+
+            </tr>
+
+            @foreach (var item in Model.store_list)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Owner_Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StoreEmail)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StoreName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Phone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.License_Number)
+                    </td>
+                    <td>
+                        @{
+                            var base64 = Convert.ToBase64String(item.License_Image_Copy);
+                            string imgsrc = string.Format("data:Image/gif;base64,{0}", base64);
+                        }
+                        <img src="@imgsrc" style="width:100px;height:100px" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Address)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tin_Number)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Discount_Percentage)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
 

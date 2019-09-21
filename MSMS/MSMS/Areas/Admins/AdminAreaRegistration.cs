@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace MSMS.Areas.Admin
+namespace MSMS.Areas.Admins
 {
     public class AdminAreaRegistration : AreaRegistration 
     {
@@ -8,7 +8,7 @@ namespace MSMS.Areas.Admin
         {
             get 
             {
-                return "Admin";
+                return "Admins";
             }
         }
 
@@ -16,7 +16,7 @@ namespace MSMS.Areas.Admin
         {
             context.MapRoute(
                 "Admin_default",
-                "Admin/{controller}/{action}/{id}",
+                "Admins/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }
             );
         }

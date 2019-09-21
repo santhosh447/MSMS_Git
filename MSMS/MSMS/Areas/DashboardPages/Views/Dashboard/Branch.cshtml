@@ -1,0 +1,91 @@
+﻿
+@{
+    ViewBag.Title = "Branch";
+    Layout = "~/Areas/DashboardPages/Views/Shared/_DBLayout.cshtml";
+}
+
+@*<script src="~/Scripts/jquery-1.10.2.js"></script>*@
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var session = '@Session["Owner_Email"]';
+            var ddlDeptNo = $("#ddlDeptId");
+            var ddlDeptNo1 = $("#ownerEmail");
+                $("#ddlDeptId").show();
+                $.ajax({
+                    type: 'get',
+                    url: 'http://localhost:50003/Api/DashBoard_API/Store_List?value=' + session,
+                    dataType: 'json',
+                    success: function (data) {
+                        ddlDeptNo.empty();
+                        ddlDeptNo.append('<option value="0">-Select Department-</option>');
+                        $.each(data, function (index, item) {
+                            ddlDeptNo.append('<option value="' + item.StoreName + '">' + item.StoreName + '</option>');
+                        });
+                    },
+                    error: function (XHR) {
+                        var ResponceText = JSON.parse(XHR.responseText);
+                        alert(XHR.status + " : " + ResponceText.Message);
+                    }
+                });
+        });
+</script>
+
+
+@using (Html.BeginForm())
+{
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <div class="author">
+                            <div class="typography-line">
+                                <a href="#">
+                                    <h4 class="title">India's 1st Integrated Digital HealthCare Platform</h4>
+                                </a>
+                            </div>
+
+                            <div class="typography-line">
+                                <span style="left:48px"><i class="nc-icon nc-single-02" style="font-size: 40px;color:#0094ff;"></i></span>
+                                Easy Access
+                                <br>
+                                <small>Access your Pharmacy from anywhere and anytime</small>
+                            </div>
+                            <div class="typography-line">
+                                <span style="left:48px"><i class="nc-icon nc-mobile" style="font-size: 40px;color:#0094ff;"></i></span>
+                                Digitized Communication
+                                <br>
+                                <small>Receive Prescription viaCustomer Mobile Application and Doctor Application</small>
+                            </div>
+                            <div class="typography-line">
+                                <span style="left:48px"><i class="nc-icon nc-istanbul" style="font-size: 40px;color:#0094ff;"></i></span>
+                                Grow together
+                                <br>
+                                <small>Connect With Doctor and Customers</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card card-user">
+                        <div class="card-header">
+                            <a class="typography-line">
+                                <h4 class="card-title" style="text-align: center;color: darkturquoise;">Select a Branch</h4>
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <select id="ddlDeptId" name="ddlDeptId" class="form-control"></select>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-danger" value="Login" name="Login" id="Login" style="width: 100%;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

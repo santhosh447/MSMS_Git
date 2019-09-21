@@ -5,7 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using MSMS.BuisnessAccessLayer;
 using MSMS.Repositary;
-using MSMS.Models;
+using MSMS.Areas.Admins.Models;
+
 using System.Web.Security;
 
 namespace MSMS.Areas.Admins.Controllers
@@ -25,28 +26,27 @@ namespace MSMS.Areas.Admins.Controllers
         {
             return View();
         }
+        
+        [HttpGet]
         public ActionResult Login()
         {
-            if (Request.IsAuthenticated)
-            {
-                return RedirectToAction("Dashboard");
-            }
+            
             return View();
         }
 
         [HttpPost]
-        public ActionResult Login(LoginModel login, string BtnLogin)
+        public ActionResult Login(LoginModel log, string login)
         {
-            if (BtnLogin == "Login")
+            if (login == "login")
             {
                 if (ModelState.IsValid)
                 {
-                    if (ObjBal.CheckUserNamePassword(login) != null)
-                    {
 
-                        Admins ad = ObjBal.CheckUserNamePassword(login);
-                        FormsAuthentication.SetAuthCookie(ad.Name, false);
-                        return RedirectToAction("Dashboard");
+                   Models.Admin emp = ObjBal.CheckLoginUserName(log);
+                    if (emp != null)
+                    {
+                        FormsAuthentication.SetAuthCookie(emp.Name, false);
+                        return RedirectToAction("Dashboard", "Manage");
                     }
                 }
             }
