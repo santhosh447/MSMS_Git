@@ -69,7 +69,7 @@
                 font-weight: 900;
             }
     </style>
-    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    @*<script src="~/Scripts/jquery-1.10.2.js"></script>*@
     <script type="text/javascript">
         //$(document).ready(function () {
         //    CalEmpCount();
@@ -99,10 +99,10 @@
                 success: function (data) {
                     var count = data;
                     if (4 < data) {
-                        $("#Active").css("background-color", "Green");
+                        $("#Active").css("background-color", "green");
                     }
                     else {
-                        $("#Active1").css("background-color", "Red");
+                        $("#Active1").css("background-color", "red");
                     }
 
                     document.getElementById("Active").innerHTML = data;

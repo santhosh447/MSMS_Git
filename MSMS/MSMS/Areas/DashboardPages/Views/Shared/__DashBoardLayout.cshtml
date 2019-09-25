@@ -44,20 +44,21 @@
                         @Html.ActionLink("Dashboard", "Dashboard", "Dashboard", new { area = "" }, new { @class = "nav-link" })
                     </li>
                     <li>
-                        @Html.ActionLink("Sell", "Sell", "Dashboard/Dashboard", new { area = "" }, new { @class = "nav-link" })
+                        @Html.ActionLink("Sell", "Sell", "DashboardPages/Dashboard", new { area = "" }, new { @class = "nav-link" })
                     </li>
                     <li>
-                        @Html.ActionLink("Purchase", "Purchase", "Dashboard/Dashboard", new { area = "" }, new { @class = "nav-link" })
+                        @Html.ActionLink("Purchase", "Purchase", "DashboardPages/Dashboard", new { area = "" }, new { @class = "nav-link" })
                     </li>
                     <li>
-                        @Html.ActionLink("Order", "Order", "Dashboard/Dashboard", new { area = "" }, new { @class = "nav-link" })
+                        @Html.ActionLink("Order", "Order", "DashboardPages/Dashboard", new { area = "" }, new { @class = "nav-link" })
                     </li>
                     <li>
-                        @Html.ActionLink("Payment", "Payment", "Dashboard/Dashboard", new { area = "" }, new { @class = "nav-link" })
+                        @Html.ActionLink("Payment", "Payment", "DashboardPages/Dashboard", new { area = "" }, new { @class = "nav-link" })
                     </li>
                     <li>
-                        @Html.ActionLink("Profiles", "Profiles", "Dashboard/Dashboard", new { area = "" }, new { @class = "nav-link" })
+                        @Html.ActionLink("Profiles", "Profiles", "DashboardPages/Dashboard", new { area = "" }, new { @class = "nav-link" })
                     </li>
+
                 </ul>
             </div>
         </div>
@@ -106,9 +107,11 @@
                                     <span class="no-icon"> @Session["StoreName"]</span>
                                 </a>
                             </li>
+       
+                            
                             <li class="nav-item">
                                 <a class="nav-link" href="">
-                            @Html.ActionLink("Logout", "Logout", new { @class = "btn btn-primary logoutform" })
+                                    @Html.ActionLink("Logout", "Logout", new { @class = "btn btn-primary logoutform" })
                             </a>
                             </li>
                         </ul>
