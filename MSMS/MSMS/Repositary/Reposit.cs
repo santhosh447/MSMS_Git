@@ -7,12 +7,38 @@ using MSMS.Areas.Admins.Models;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
-
+using System.Net.Mail;
+using System.Net;
 
 namespace MSMS.Repositary
 {
     public class Reposit : IReposit
     {
+        public void ChagePassword(string owner, string Password)
+        {
+            try
+            {
+                string strcon = ConfigurationManager.ConnectionStrings["MSMS"].ConnectionString;
+                using (SqlConnection cn = new SqlConnection(strcon))
+                {
+
+                    cn.Open();
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = cn;
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText = "update owner_Registration set Password=@Password where Owner_Email=@Owner_Email";
+                    cmd.Parameters.AddWithValue("@Password", Password);
+                    cmd.Parameters.AddWithValue("@Owner_Email", owner);
+                    cmd.ExecuteNonQuery();
+                    cn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
         public Admin CheckLoginUserName(LoginModel log)
         {
             using (MSMSEntities db = new MSMSEntities())
@@ -56,6 +82,19 @@ namespace MSMS.Repositary
             }
             return owner;
         }
+
+        //public Owner_Registration NewPassWord(Owner_Registration owner, string Password, string ownerEmail)
+        //{
+        //    string strcon = ConfigurationManager.ConnectionStrings["MSMSDB"].ConnectionString;
+        //    using (SqlConnection con = new SqlConnection(strcon))
+        //    {
+        //        con.Open();
+        //        SqlCommand cmd = new SqlCommand("update Owner_Registration set Password='" + Password + "' where Owner_Email='" + ownerEmail + "'", con);
+        //        cmd.ExecuteNonQuery();
+        //        con.Close();
+        //    }
+        //    return owner;
+        //}
 
         public List<Owner_Registration> OwnerData()
         {
@@ -127,6 +166,25 @@ namespace MSMS.Repositary
             {
                 return db.Owner_Registration.Where(m => m.Owner_Email == login.Owner_Email && m.Password == login.Password).SingleOrDefault();
             }
+        }
+
+        public void SendMailTo(string To, string Subject, string Body)
+        {
+            SmtpClient smtpc = new SmtpClient("smtp.gmail.com");
+            smtpc.Port = 587;
+            smtpc.EnableSsl = true;
+            smtpc.UseDefaultCredentials = false;
+            string userId = "kalphakursanthosh.vtalent@gmail.com"; //<--Enter your gmail id here
+            string pass = "Sampath@123"; //<--Enter Your gmail password here           
+            string body = Body;  //Message body
+            smtpc.Credentials = new NetworkCredential(userId, pass);
+            MailMessage message = new MailMessage();
+            message.To.Add(To);// Email-ID of Receiver  
+            message.Subject = Subject;// Subject of Email  
+            message.From = new System.Net.Mail.MailAddress("kalphakursanthosh.vtalent@gmail.com");// Email-ID of Sender  
+            message.IsBodyHtml = true;
+            message.Body = body;
+            smtpc.Send(message);
         }
 
         public List<Store_Registration> StoreData()

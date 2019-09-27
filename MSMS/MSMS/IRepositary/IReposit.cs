@@ -33,6 +33,11 @@ namespace MSMS.IRepositary
         List<Owner_Registration> Owner_Email(string ownerEmail);
         List<Store_Registration> Store_List(string value);
 
+        void SendMailTo(string To, string Subject, string Body);
+
+        void ChagePassword(string owner, string Password);
+        //Owner_Registration NewPassWord(Owner_Registration owner, string Password, string ownerEmail);
+
 
 
     }

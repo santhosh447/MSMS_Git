@@ -6,6 +6,7 @@
 //     Manual changes to this file will be overwritten if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+using System.ComponentModel.DataAnnotations;
 
 namespace MSMS.Areas.Admins.Models
 {
@@ -19,18 +20,41 @@ namespace MSMS.Areas.Admins.Models
         {
             this.Store_Registration = new HashSet<Store_Registration>();
         }
-    
+
+        [Required(ErrorMessage = "Please Enter Owner Email")]
         public string Owner_Email { get; set; }
+
+        [Required(ErrorMessage = "Please Enter Name")]
         public string Name { get; set; }
+
+        [Required(ErrorMessage = "Please Enter Age")]
         public int Age { get; set; }
+
+        [Required(ErrorMessage = "Please Enter Gender")]
         public string Gender { get; set; }
+
+        [Required(ErrorMessage = "Please Enter Phone")]
         public string Phone { get; set; }
+
+        //[Required(ErrorMessage = "Please Enter Pan_number")]
         public byte[] Pan_Number { get; set; }
+
+        //[Required(ErrorMessage = "Please Enter Aadhar_number")]
         public byte[] Aadhar_Number { get; set; }
+
+        [Required(ErrorMessage = "Please Enter Permanent_Address")]
         public string Permanent_Address { get; set; }
+
+        [Required(ErrorMessage = "Please Enter Current_Address")]
         public string Current_Address { get; set; }
+
+        //[Required(ErrorMessage = "Please Enter Owner_Image")]
         public byte[] Owner_Image { get; set; }
+
+        [Required(ErrorMessage = "Please Enter Password")]
         public string Password { get; set; }
+
+        [Required(ErrorMessage = "Please Enter Status")]
         public string Status { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

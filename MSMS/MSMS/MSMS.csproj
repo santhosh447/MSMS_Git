@@ -277,6 +277,8 @@
     <Content Include="Areas\DashboardPages\Views\Dashboard\Profiles.cshtml" />
     <Content Include="Areas\DashboardPages\Views\Dashboard\Login.cshtml" />
     <Content Include="Areas\DashboardPages\Views\Dashboard\Branch.cshtml" />
+    <Content Include="Areas\DashboardPages\Views\Dashboard\ChangePassWord.cshtml" />
+    <Content Include="Areas\DashboardPages\Views\Dashboard\NewPassword.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -289,6 +291,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\MyScript.js" />
+    <Content Include="Scripts\Owner_Jquery.js" />
     <Content Include="vendor\bootstrap\js\bootstrap.bundle.js" />
     <Content Include="vendor\bootstrap\js\bootstrap.bundle.min.js" />
     <Content Include="vendor\bootstrap\js\bootstrap.js" />

@@ -38,6 +38,8 @@
 </style>
 <link href="~/css/login.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/Owner_Jquery.js"></script>
 
 @using (Html.BeginForm("OwnerRegistrationAdd", "Manage", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
@@ -52,7 +54,9 @@
                     <div class="col-sm-5" style="font-weight:bold;">Owner_Email</div>
                     <div class="col-sm-5">
                         @*<input type="email" id="txtOwnerEmail" name="txtOwnerEmail" class="form-control" placeholder="Enter Employee Name" />*@
-                        @Html.TextBoxFor(m => m.Owner_Email, null, new { @class = "form-control", @placeholder = "Enter Owner Name" })
+                        @Html.TextBoxFor(m => m.Owner_Email, null, new { @class = "form-control", @placeholder = "Enter Owner Name", @id = "txtOwnerEmail" })
+                        @Html.ValidationMessageFor(m => m.Owner_Email, "", new { @class = "text-danger"})
+
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
@@ -61,7 +65,8 @@
                     <div class="col-sm-5" style="font-weight:bold;">Name</div>
                     <div class="col-sm-5">
                         @*<input type="text" id="txtName" name="txtName" class="form-control" placeholder="Enter Name" />*@
-                        @Html.TextBoxFor(m => m.Name, null, new { @class = "form-control", @placeholder = "Enter Owner Name" })
+                        @Html.TextBoxFor(m => m.Name, null, new { @class = "form-control", @placeholder = "Enter Owner Name", @id = "txtName" })
+                        @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
 
                     </div>
                     <div class="col-sm-1"></div>
@@ -71,7 +76,8 @@
                     <div class="col-sm-5" style="font-weight:bold;">Age</div>
                     <div class="col-sm-5">
                         @*<input type="text" id="txtAge" name="txtAge" class="form-control" placeholder="Enter Age" />*@
-                        @Html.TextBoxFor(m => m.Age, null, new { @class = "form-control", @placeholder = "Enter Age" })
+                        @Html.TextBoxFor(m => m.Age, null, new { @class = "form-control", @placeholder = "Enter Age", @id = "txtAge" })
+                        @Html.ValidationMessageFor(m => m.Age, "", new { @class = "text-danger" })
 
                     </div>
                     <div class="col-sm-1"></div>
@@ -81,10 +87,12 @@
                     <div class="col-sm-5" style="font-weight:bold;">Gender</div>
                     <div class="col-sm-5">
                         @*<input type="radio" id="rbtnMale" name="Gender" class="form" value="Male" /> Male
-                <input type="radio" id="rbtnFemale" name="Gender" class="form" value="Female" /> Female*@
+        <input type="radio" id="rbtnFemale" name="Gender" class="form" value="Female" /> Female*@
                         @Html.RadioButtonFor(m => m.Gender, "male", new { @class = "form", @id = "rdbtnMale" })male
 
                         @Html.RadioButtonFor(m => m.Gender, "female", new { @class = "form", @id = "rdbtnFemale" })female
+                        @Html.ValidationMessageFor(m => m.Gender, "", new { @class = "text-danger" })
+
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
@@ -93,7 +101,8 @@
                     <div class="col-sm-5" style="font-weight:bold;">Phone</div>
                     <div class="col-sm-5">
                         @*<input type="tel" id="txtPhone" name="txtPhone" class="form-control" placeholder="Enter Phone" />*@
-                        @Html.TextBoxFor(m => m.Phone, null, new { @class = "form-control", @placeholder = "Enter Phone" })
+                        @Html.TextBoxFor(m => m.Phone, null, new { @class = "form-control", @placeholder = "Enter Phone", @id = "txtPhone" })
+                        @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-danger" })
 
                     </div>
                     <div class="col-sm-1"></div>
@@ -117,7 +126,9 @@
                         </div>
                     </div>
                     <div class="col-sm-1"></div>
-               `</div>
+                    @Html.ValidationMessageFor(m => m.Pan_Number, "", new { @class = "text-danger" })
+
+                </div>
                 <div class="row">
                     <div class="col-sm-1"></div>
                     <div class="col-sm-5 form-group">
@@ -128,21 +139,26 @@
                             <div class="fileinput-new img-thumbnail" style="width: 200px; height: 150px;">
                                 <img data-src="holder.js/100%x100%" alt="...">
                             </div>
-                             <div class="fileinput-preview fileinput-exists img-thumbnail" style="max-width: 200px; max-height: 150px;"></div>
+                            <div class="fileinput-preview fileinput-exists img-thumbnail" style="max-width: 200px; max-height: 150px;"></div>
                             <div>
-                                 <span class="btn btn-outline-secondary btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span><input type="file" name="Image1" id="Image1"></span>
-                                 <a href="#" class="btn btn-outline-secondary fileinput-exists" data-dismiss="fileinput">Remove</a>
-                             </div>
+                                <span class="btn btn-outline-secondary btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span><input type="file" name="Image1" id="Image1"></span>
+                                <a href="#" class="btn btn-outline-secondary fileinput-exists" data-dismiss="fileinput">Remove</a>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-sm-1"></div>
+                    <div class="col-sm-1">
+                        @Html.ValidationMessageFor(m => m.Aadhar_Number, "", new { @class = "text-danger" })
+
+
+                    </div>
                 </div>
                 <div class="row" style="margin-top:10px;">
                     <div class="col-sm-1"></div>
                     <div class="col-sm-5" style="font-weight:bold;">Permanent_Address</div>
                     <div class="col-sm-5">
-                        @*<textarea rows="4" cols="50" id="currentaddress"></textarea>*@
-                        @Html.TextAreaFor(m => m.Permanent_Address, new { @class = "form-control", @placeholder = "Enter Current Address" })
+                        @*<textarea rows="4" cols="50" id="permanentaddress"></textarea>*@
+                        @Html.TextAreaFor(m => m.Permanent_Address, new { @class = "form-control", @placeholder = "Enter Current Address", @id = "permanentaddress" })
+                        @Html.ValidationMessageFor(m => m.Permanent_Address, "", new { @class = "text-danger" })
 
                     </div>
                     <div class="col-sm-1"></div>
@@ -152,7 +168,8 @@
                     <div class="col-sm-5" style="font-weight:bold;">Current_Address</div>
                     <div class="col-sm-5">
                         @*<textarea rows="4" cols="50" id="currentaddress"></textarea>*@
-                        @Html.TextAreaFor(m => m.Current_Address, new { @class = "form-control", @placeholder = "Enter Current Address" })
+                        @Html.TextAreaFor(m => m.Current_Address, new { @class = "form-control", @placeholder = "Enter Current Address", @id = "currentaddress" })
+                        @Html.ValidationMessageFor(m => m.Current_Address, "", new { @class = "text-danger" })
 
                     </div>
                     <div class="col-sm-1"></div>
@@ -174,9 +191,13 @@
                                 <a href="#" class="btn btn-outline-secondary fileinput-exists" data-dismiss="fileinput">Remove</a>
                             </div>
                         </div>
-                    
+
                     </div>
-                    <div class="col-sm-1"></div>
+                    <div class="col-sm-1">
+                        @Html.ValidationMessageFor(m => m.Owner_Image, "", new { @class = "text-danger" })
+
+
+                    </div>
                 </div>
                 <div class="row" style="margin-top:10px;">
                     <div class="col-sm-1"></div>
@@ -184,6 +205,8 @@
                     <div class="col-sm-5">
                         @*<input type="file" class="uploadFile img" value="Upload Photo" id="Owner_Image" style="width: 0px;height: 0px;overflow: hidden;">*@
                         @Html.PasswordFor(m => m.Password, new { @type = "password", @class = "form-control", @placeholder = "Enter Password", @id = "txtPwd" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
@@ -192,7 +215,9 @@
                     <div class="col-sm-5" style="font-weight:bold;">Status</div>
                     <div class="col-sm-5">
                         @*<input type="file" class="uploadFile img" value="Upload Photo" id="Owner_Image" style="width: 0px;height: 0px;overflow: hidden;">*@
-                        @Html.TextBoxFor(m => m.Status, new { @class = "form-control", @placeholder = "Enter Status" })
+                        @Html.TextBoxFor(m => m.Status, new { @class = "form-control", @placeholder = "Enter Status", @id = "status" })
+                        @Html.ValidationMessageFor(m => m.Status, "", new { @class = "text-danger" })
+
                     </div>
                     <div class="col-sm-1"></div>
                 </div>

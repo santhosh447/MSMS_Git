@@ -29,21 +29,41 @@ namespace MSMS.Areas.Admins.Controllers
         [HttpPost]
         public ActionResult OwnerRegistrationAdd(Owner_Registration Owner, string Register, HttpPostedFileBase Image, HttpPostedFileBase Image1, HttpPostedFileBase Image2)
         {
-            if (Register == "Register")
+            if(ModelState.IsValid)
             {
-                Owner.Pan_Number = new byte[Image.ContentLength];
-                Image.InputStream.Read(Owner.Pan_Number, 0, Image.ContentLength);
+                if (Register == "Register")
+                {
+                    if(Image == null)
+                    {
+                        Response.Write("<script>alert('Please Select Pan_Image')</script>");
+                        return View();
+                    }
+                    if (Image1 == null)
+                    {
+                        Response.Write("<script>alert('Please Select Aadhar_Image')</script>");
+                        return View();
+                    }
+                    if (Image2 == null)
+                    {
+                        Response.Write("<script>alert('Please Select Owner_Image')</script>");
+                        return View();
+                    }
 
-                Owner.Aadhar_Number = new byte[Image1.ContentLength];
-                Image1.InputStream.Read(Owner.Aadhar_Number, 0, Image1.ContentLength);
-               
-                Owner.Owner_Image = new byte[Image2.ContentLength];
-                Image2.InputStream.Read(Owner.Owner_Image, 0, Image2.ContentLength);
-                ObjBal.InsertOwnerReg(Owner);
+                    Owner.Pan_Number = new byte[Image.ContentLength];
+                    Image.InputStream.Read(Owner.Pan_Number, 0, Image.ContentLength);
 
-                Session["Owner_Email"] = Owner.Owner_Email;
-                return RedirectToAction("StoreAdd");
+                    Owner.Aadhar_Number = new byte[Image1.ContentLength];
+                    Image1.InputStream.Read(Owner.Aadhar_Number, 0, Image1.ContentLength);
+
+                    Owner.Owner_Image = new byte[Image2.ContentLength];
+                    Image2.InputStream.Read(Owner.Owner_Image, 0, Image2.ContentLength);
+                    ObjBal.InsertOwnerReg(Owner);
+
+                    Session["Owner_Email"] = Owner.Owner_Email;
+                    return RedirectToAction("StoreAdd");
+                }
             }
+            
 
 
             return View();

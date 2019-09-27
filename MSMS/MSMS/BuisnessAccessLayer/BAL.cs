@@ -76,5 +76,17 @@ namespace MSMS.BuisnessAccessLayer
         {
             return Iobj.Store_List(value);
         }
+        //public Owner_Registration NewPassWord(Owner_Registration owner, string Password, string ownerEmail)
+        //{
+        //    return Iobj.NewPassWord(owner, Password, ownerEmail);
+        //}
+        public void SendMailTo(string To, string Subject, string Body)
+        {
+            Iobj.SendMailTo(To, Subject, Body);
+        }
+        public void ChagePassword(string owner, string Password)
+        {
+            Iobj.ChagePassword(owner, Password);
+        }
     }
 }

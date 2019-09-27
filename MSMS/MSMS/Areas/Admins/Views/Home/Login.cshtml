@@ -3,47 +3,89 @@
 @{
     ViewBag.Title = "Login";
 }
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script>
+    function Validation() {
+        debugger;
+        var Owner_Email = document.getElementById('txtemailAddress');
+        var PhoneNo = document.getElementById('txtpassword');
+
+        //Current_Address,Permanent_Address
+
+        var passwordExpression = '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,12})';
+        var EmailExpression = /^([\w-\.]+)@@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+
+        if (Owner_Email.value == '') {
+            alert("Please Enter Email Id");
+            return false;
+        }
+        else if (!Owner_Email.value.match(EmailExpression)) {
+            alert("Please enter Valid Mail id");
+            return false;
+        }
+
+        if (PhoneNo.value == '') {
+            alert("Please Enter Phone Number");
+            return false;
+        }
+        else if (!PhoneNo.value.match(phoneno)) {
+            alert("Please Enter 10 Numbers");
+            return false;
+        }
+        return true;
+    }
+    $(document).ready(function () {
+        $("#login").click(function () {
+            Validation();
+        });
+    });
+</script>
+
 <link href="~/css/login.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
-@using (Html.BeginForm()) { 
-<div class="container h-100">
-    <div class="d-flex justify-content-center h-100">
-        <div class="user_card">
+@using (Html.BeginForm())
+{
+    <div class="container h-100">
+        <div class="d-flex justify-content-center h-100">
+            <div class="user_card">
 
-            <div class="brand_logodesign">
-                <img src="https://cdn.freebiesupply.com/logos/large/2x/pinterest-circle-logo-png-transparent.png" class="brand_logo" alt="Logo">
+                <div class="brand_logodesign">
+                    <img src="https://cdn.freebiesupply.com/logos/large/2x/pinterest-circle-logo-png-transparent.png" class="brand_logo" alt="Logo">
+                </div>
+                <div class="d-flex justify-content-center form_container">
+                    <form>
+                        <div class="input-group mb-3">
+                            <span class="input-group-addon" style="background-color: crimson;color:#fff;"><i class="glyphicon glyphicon-user"></i></span>
+                            @*<input id="email" type="text" class="form-control" name="email" placeholder="Email">*@
+                            @Html.TextBoxFor(m => m.EmailAddress, new { @class = "form-control", @type = "email", @placeholder = "Enter Email Id",@id="txtemailAddress" })
+                            @Html.ValidationMessageFor(m => m.EmailAddress, "", new { @class = "text-danger" })
+
+                        </div>
+                        <br />
+
+                        <div class="input-group mb-2">
+                            <span class="input-group-addon" style="background-color: crimson;color:#fff;"><i class="glyphicon glyphicon-lock"></i></span>
+                            @*<input id="password" type="password" class="form-control" name="password" placeholder="Password">*@
+                            @Html.PasswordFor(m => m.password, new { @type = "password", @class = "form-control", @placeholder = "Enter Password",@id="txtpassword"})
+                            @Html.ValidationMessageFor(m => m.password, "", new { @class = "text-danger" })
+
+                        </div>
+
+                        <br>
+                        <div class="form-group mb-1">
+                            <input type="submit" id="login" name="login" value="login" class="btn btn-primary" />
+                            <input type="submit" id="Cancel" name="login" value="Cancel" class="btn btn-danger" />
+                        </div>
+                        @Html.ActionLink("Login", "Dashboard")
+                    </form>
+                </div>
+
+
+
             </div>
-            <div class="d-flex justify-content-center form_container">
-                <form>
-                    <div class="input-group mb-3">
-                        <span class="input-group-addon" style="background-color: crimson;color:#fff;"><i class="glyphicon glyphicon-user"></i></span>
-                        @*<input id="email" type="text" class="form-control" name="email" placeholder="Email">*@
-                        @Html.TextBoxFor(m => m.EmailAddress, new { @class = "form-control", @type = "email", @placeholder = "Enter Email Id" })
-                    </div>
-                    <br />
-
-                    <div class="input-group mb-2">
-                        <span class="input-group-addon" style="background-color: crimson;color:#fff;"><i class="glyphicon glyphicon-lock"></i></span>
-                        @*<input id="password" type="password" class="form-control" name="password" placeholder="Password">*@
-                        @Html.PasswordFor(m => m.password, new { @type = "password", @class = "form-control", @placeholder = "Enter Password" })
-
-                    </div>
-
-                    <br>
-                    <div class="form-group mb-1">
-                        <input type="submit" id="login" name="login" value="login" class="btn btn-primary" />
-                        <input type="submit" id="Cancel" name="login" value="Cancel" class="btn btn-danger" />
-                    </div>
-                    @Html.ActionLink("Login", "Dashboard")
-                </form>
-            </div>
-
-
 
         </div>
-
     </div>
-</div>
 
 
 }
